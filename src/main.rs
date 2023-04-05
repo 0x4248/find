@@ -1,3 +1,8 @@
+/* Find (main.rs)
+ * A file finder made in rust
+ * Github: https://www.github.com/awesomelewis2007/find
+*/
+
 use std::env;
 use std::io::{self, Write};
 use std::path::Path;

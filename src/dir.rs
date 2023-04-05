@@ -1,3 +1,8 @@
+/* Find (dir.rs)
+ * A file finder made in rust
+ * Github: https://www.github.com/awesomelewis2007/find
+*/
+
 use std::fs;
 use std::path::{Path, PathBuf};
 use termion;
