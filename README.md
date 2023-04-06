@@ -1,8 +1,8 @@
-# Find
+# 🔎 Find
 
 A file finder made in rust
 
-## Usage
+## ❓ Usage
 
 ```bash
 find <FILE> <PATH>
@@ -20,11 +20,11 @@ If we want to search for a file in a specific directory, we can do that by runni
 find README.md /path/to/directory
 ```
 
-## Installation
+## 🔨 Installation
 
 ```
 cargo install find
 ```
 
-## License
+## 📝 License
 This project is licensed under the GPL-3 license. See the [LICENSE](LICENSE) file for more info.
