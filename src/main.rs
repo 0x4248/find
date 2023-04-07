@@ -9,7 +9,7 @@ use std::path::Path;
 use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
-
+use termion;
 mod dir;
 
 fn main() {
@@ -37,7 +37,7 @@ fn main() {
     spinner_cleanup();
 
     if found_files.is_empty() {
-        println!("No files found");
+        println!("{} Error{}: No files found", termion::color::Fg(termion::color::Red), termion::style::Reset);
     } else {
         for path in found_files {
             println!("{}", path.display());
