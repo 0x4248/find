@@ -4,13 +4,13 @@
 */
 
 use std::env;
-use std::io::{self, Write};
 use std::path::Path;
 use std::sync::{Arc, Mutex};
-use std::thread;
-use std::time::Duration;
 use termion;
 mod dir;
+mod spinner;
+use spinner::spinner::start_spinner;
+use spinner::spinner::spinner_cleanup;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -28,7 +28,7 @@ fn main() {
     };
 
     let stop_spinner = Arc::new(Mutex::new(false));
-    let spinner_thread = start_spinner(stop_spinner.clone());
+    let spinner_thread = start_spinner(vec!["⠋","⠙","⠹","⠸","⠼","⠴","⠦","⠧","⠇","⠏"].iter().map(|s| s.to_string()).collect(), "Loading".to_string(), stop_spinner.clone());
 
     let found_files = dir::search_files(&path, filename);
 
@@ -43,24 +43,4 @@ fn main() {
             println!("{}", path.display());
         }
     }
-}
-
-fn spinner_cleanup(){
-    print!("\r");
-    io::stdout().flush().unwrap();
-}
-
-fn start_spinner(stop_spinner: Arc<Mutex<bool>>) -> thread::JoinHandle<()> {
-    thread::spawn(move || {
-        let spinner_chars = vec!["⠋","⠙","⠹","⠸","⠼","⠴","⠦","⠧","⠇","⠏"];
-        let mut spinner_index = 0;
-
-        while !*stop_spinner.lock().unwrap() {
-            print!("\rSearching {}", spinner_chars[spinner_index]);
-            io::stdout().flush().unwrap();
-            spinner_index = (spinner_index + 1) % spinner_chars.len();
-            thread::sleep(Duration::from_millis(100));
-        }
-        io::stdout().flush().unwrap();
-    })
 }
