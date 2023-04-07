@@ -52,7 +52,7 @@ fn spinner_cleanup(){
 
 fn start_spinner(stop_spinner: Arc<Mutex<bool>>) -> thread::JoinHandle<()> {
     thread::spawn(move || {
-        let spinner_chars = vec!['-', '\\', '|', '/'];
+        let spinner_chars = vec!["⠋","⠙","⠹","⠸","⠼","⠴","⠦","⠧","⠇","⠏"];
         let mut spinner_index = 0;
 
         while !*stop_spinner.lock().unwrap() {
