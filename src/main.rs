@@ -15,14 +15,27 @@ use spinner::spinner::spinner_cleanup;
 fn main() {
     let args: Vec<String> = env::args().collect();
 
+    let mut quiet = false;
+    if args.len() == 2 && args[1] == "-q" {
+        quiet = true;
+    }
+
     if args.len() < 2 {
         println!("Usage: {} <filename> <path>", args[0]);
         return;
     }
-
-    let filename = &args[1];
-    let path = if args.len() == 3 {
-        Path::new(&args[2])
+    let filename;
+    if quiet {
+        filename = &args[2];
+    } else {
+        filename = &args[1];
+    }
+    let path = if args.len() == 3 || (args.len() == 4 && args[1] == "-q") {
+        if quiet {
+            Path::new(&args[3])
+        } else {
+            Path::new(&args[2])
+        }
     } else {
         Path::new(".")
     };
@@ -37,10 +50,16 @@ fn main() {
     spinner_cleanup();
 
     if found_files.is_empty() {
-        println!("{} Error{}: No files found", termion::color::Fg(termion::color::Red), termion::style::Reset);
+        if !quiet {
+            println!("{} Error{}: No files found", termion::color::Fg(termion::color::Red), termion::style::Reset);
+        }
     } else {
         for path in found_files {
-            println!("{}", path.display());
+            if quiet {
+                println!("{}", path.display());
+            } else {
+                println!("{}{}{}", termion::color::Fg(termion::color::Green), path.display(), termion::style::Reset);
+            }
         }
     }
 }
