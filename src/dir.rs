@@ -7,7 +7,7 @@ use std::fs;
 use std::path::{Path, PathBuf};
 use termion;
 
-pub fn search_files(dir: &Path, filename: &str) -> Vec<PathBuf> {
+pub fn search_files(dir: &Path, filename: &str, quiet: &bool) -> Vec<PathBuf> {
     let mut found_files = Vec::new();
 
     match fs::read_dir(dir) {
@@ -19,19 +19,20 @@ pub fn search_files(dir: &Path, filename: &str) -> Vec<PathBuf> {
                     if path.is_file() && path.file_name().unwrap() == filename {
                         found_files.push(path);
                     } else if path.is_dir() {
-                        found_files.extend(search_files(&path, filename));
+                        found_files.extend(search_files(&path, filename, quiet));
                     }
                 }
             }
         }
         Err(_) => {
-            println!(
-                "{}Error{}: couldn't read {}",
-                termion::color::Fg(termion::color::Red),
-                termion::color::Fg(termion::color::Reset),
-                dir.display()
-            );
-    
+            if !quiet {
+                println!(
+                    "{}Error{}: couldn't read {}",
+                    termion::color::Fg(termion::color::Red),
+                    termion::color::Fg(termion::color::Reset),
+                    dir.display()
+                );
+            }
         }
     }
     found_files

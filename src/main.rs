@@ -41,9 +41,9 @@ fn main() {
     };
 
     let stop_spinner = Arc::new(Mutex::new(false));
-    let spinner_thread = start_spinner(vec!["⠋","⠙","⠹","⠸","⠼","⠴","⠦","⠧","⠇","⠏"].iter().map(|s| s.to_string()).collect(), "Loading".to_string(), 100 , stop_spinner.clone());
+    let spinner_thread = start_spinner(vec!["⠋","⠙","⠹","⠸","⠼","⠴","⠦","⠧","⠇","⠏"].iter().map(|s| s.to_string()).collect(), "Searching for file".to_string(), 100 , stop_spinner.clone());
 
-    let found_files = dir::search_files(&path, filename);
+    let found_files = dir::search_files(&path, filename, &quiet);
 
     *stop_spinner.lock().unwrap() = true;
     spinner_thread.join().unwrap();
@@ -58,7 +58,7 @@ fn main() {
             if quiet {
                 println!("{}", path.display());
             } else {
-                println!("{}{}{}", termion::color::Fg(termion::color::Green), path.display(), termion::style::Reset);
+                println!("{}Found{}: {}", termion::color::Fg(termion::color::Green), termion::style::Reset, path.display());
             }
         }
     }
