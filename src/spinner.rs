@@ -1,6 +1,9 @@
 /* Rust Spinner (spinner.rs)
  * A simple spinner for Rust
- */
+ * Github: https://www.github.com/awesomelewis2007/rust_spinner
+ * Licence: GPL-3.0
+ * By: Lewis Evans
+*/
 
 pub mod spinner {
     use std::io::{self, Write};
