@@ -11,8 +11,8 @@ use std::sync::{Arc, Mutex};
 use termion;
 mod dir;
 mod spinner;
-use spinner::spinner::start_spinner;
 use spinner::spinner::spinner_cleanup;
+use spinner::spinner::start_spinner;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -43,7 +43,15 @@ fn main() {
     };
 
     let stop_spinner = Arc::new(Mutex::new(false));
-    let spinner_thread = start_spinner(vec!["⠋","⠙","⠹","⠸","⠼","⠴","⠦","⠧","⠇","⠏"].iter().map(|s| s.to_string()).collect(), "Searching for file".to_string(), 100 , stop_spinner.clone());
+    let spinner_thread = start_spinner(
+        vec!["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+            .iter()
+            .map(|s| s.to_string())
+            .collect(),
+        "Searching for file".to_string(),
+        100,
+        stop_spinner.clone(),
+    );
 
     let found_files = dir::search_files(&path, filename, &quiet);
 
@@ -53,14 +61,23 @@ fn main() {
 
     if found_files.is_empty() {
         if !quiet {
-            println!("{} Error{}: No files found", termion::color::Fg(termion::color::Red), termion::style::Reset);
+            println!(
+                "{} Error{}: No files found",
+                termion::color::Fg(termion::color::Red),
+                termion::style::Reset
+            );
         }
     } else {
         for path in found_files {
             if quiet {
                 println!("{}", path.display());
             } else {
-                println!("{}Found{}: {}", termion::color::Fg(termion::color::Green), termion::style::Reset, path.display());
+                println!(
+                    "{}Found{}: {}",
+                    termion::color::Fg(termion::color::Green),
+                    termion::style::Reset,
+                    path.display()
+                );
             }
         }
     }
