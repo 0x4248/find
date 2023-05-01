@@ -14,8 +14,21 @@ mod spinner;
 use spinner::spinner::spinner_cleanup;
 use spinner::spinner::start_spinner;
 
+const VERSION: &str = "1.0.0";
+
 fn main() {
     let args: Vec<String> = env::args().collect();
+    if args[1] == "-h" {
+        println!("Usage: {} <filename> <path>", args[0]);
+        println!("Options:");
+        println!("\t-h\tShow this help message");
+        println!("\t-v\tShow version");
+        println!("\t-q\tQuiet mode");
+        return;
+    } else if args[1] == "-v" {
+        println!("Find version: {}", VERSION);
+        return;
+    }
 
     let mut quiet = false;
     if args.len() == 2 && args[1] == "-q" {
