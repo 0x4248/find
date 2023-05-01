@@ -75,7 +75,7 @@ fn main() {
     if found_files.is_empty() {
         if !quiet {
             println!(
-                "{} Error{}: No files found",
+                "{} Error{}: No files were found",
                 termion::color::Fg(termion::color::Red),
                 termion::style::Reset
             );
