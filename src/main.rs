@@ -37,6 +37,7 @@ fn main() {
 
     if args.len() < 2 {
         println!("Usage: {} <filename> <path>", args[0]);
+        println!("For help use the help option using: {} -h", args[0]);
         return;
     }
     let filename;
