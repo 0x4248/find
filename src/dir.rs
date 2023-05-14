@@ -1,7 +1,7 @@
 /* Find (dir.rs)
  * A file finder made in rust
  * Github: https://www.github.com/awesomelewis2007/find
- * Licence: GPL-3.0
+ * Licence: GNU General Public License v3.0
  * By: Lewis Evans
 */
 
