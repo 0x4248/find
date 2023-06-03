@@ -14,7 +14,7 @@ mod spinner;
 use spinner::spinner::spinner_cleanup;
 use spinner::spinner::start_spinner;
 
-const VERSION: &str = "1.0.0";
+const VERSION: &str = "1.1.0";
 
 fn main() {
     let args: Vec<String> = env::args().collect();
