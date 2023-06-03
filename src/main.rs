@@ -25,10 +25,10 @@ fn main() {
             println!("\t-h\tShow this help message");
             println!("\t-v\tShow version");
             println!("\t-q\tQuiet mode");
-        },
+        }
         Some(arg) if arg == "-v" => {
             println!("Find version: {}", VERSION.to_string());
-        },
+        }
         _ => {}
     }
 
