@@ -18,16 +18,18 @@ const VERSION: &str = "1.0.0";
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    if args[1] == "-h" {
-        println!("Usage: {} <filename> <path>", args[0]);
-        println!("Options:");
-        println!("\t-h\tShow this help message");
-        println!("\t-v\tShow version");
-        println!("\t-q\tQuiet mode");
-        return;
-    } else if args[1] == "-v" {
-        println!("Find version: {}", VERSION);
-        return;
+    match args.get(1) {
+        Some(arg) if arg == "-h" => {
+            println!("Usage: {} <filename> <path>", args[0]);
+            println!("Options:");
+            println!("\t-h\tShow this help message");
+            println!("\t-v\tShow version");
+            println!("\t-q\tQuiet mode");
+        },
+        Some(arg) if arg == "-v" => {
+            println!("Find version: {}", VERSION.to_string());
+        },
+        _ => {}
     }
 
     let mut quiet = false;
