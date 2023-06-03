@@ -83,16 +83,17 @@ fn main() {
         }
     } else {
         for path in found_files {
-            if quiet {
-                println!("{}", path.display());
+            let message = if quiet {
+                path.display().to_string()
             } else {
-                println!(
+                format!(
                     "{}Found{}: {}",
                     termion::color::Fg(termion::color::Green),
                     termion::style::Reset,
                     path.display()
-                );
-            }
+                )
+            };
+            println!("{}", message);
         }
     }
 }
