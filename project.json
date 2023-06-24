@@ -1,0 +1,12 @@
+{
+    "name": "find",
+    "description": "A file finder made in rust",
+    "version": "",
+    "main_file": "src/main.rs",
+    "author": "Lewis Evans",
+    "license": "GNU General Public License v3.0",
+    "url": "https://www.github.com/awesomelewis2007/find",
+    "email": "none",
+    "languages": [],
+    "actions": {}
+}
