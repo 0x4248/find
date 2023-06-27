@@ -1,6 +1,6 @@
 /* Find (main.rs)
  * A file finder made in rust
- * Github: https://www.github.com/awesomelewis2007/find
+ * Github: https://www.github.com/lewisevans2007/find
  * Licence: GNU General Public License v3.0
  * By: Lewis Evans
 */
