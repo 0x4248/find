@@ -9,6 +9,13 @@ use std::fs;
 use std::path::{Path, PathBuf};
 use termion;
 
+/**
+ * search_files - recursively search a directory for a file
+ * @param dir: the directory to search
+ * @param filename: the name of the file to search for
+ * @param quiet: whether to print errors or not
+ * @return a vector of paths to the found files
+ */
 pub fn search_files(dir: &Path, filename: &str, quiet: &bool) -> Vec<PathBuf> {
     let mut found_files = Vec::new();
 
