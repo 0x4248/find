@@ -27,4 +27,4 @@ cargo install find
 ```
 
 ## 📝 License
-This project is licensed under the GPL-3 license. See the [LICENCE](LICENCE) file for more info.
+This project is licensed under the GNU General Public License v3.0 licence. See the [LICENCE](LICENCE) file for more info.
