@@ -28,6 +28,7 @@ fn main() {
         }
         Some(arg) if arg == "-v" => {
             println!("Find version: {}", VERSION.to_string());
+            return;
         }
         _ => {}
     }
