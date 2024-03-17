@@ -33,6 +33,7 @@ pub fn search_files(dir: &Path, filename: &str, quiet: &bool) -> Vec<PathBuf> {
                 }
             }
         }
+        
         Err(_) => {
             if !quiet {
                 println!(

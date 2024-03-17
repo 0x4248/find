@@ -9,6 +9,7 @@ use std::env;
 use std::path::Path;
 use std::sync::{Arc, Mutex};
 use termion;
+
 mod dir;
 mod spinner;
 use spinner::spinner::spinner_cleanup;
@@ -44,6 +45,7 @@ fn main() {
         return;
     }
     let filename;
+    
     if quiet {
         filename = &args[2];
     } else {
