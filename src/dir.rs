@@ -33,11 +33,11 @@ pub fn search_files(dir: &Path, filename: &str, quiet: &bool) -> Vec<PathBuf> {
                 }
             }
         }
-        
+
         Err(_) => {
             if !quiet {
                 println!(
-                    "{}Error{}: couldn't read {}",
+                    "{}Error{}: couldn't read the directory: {}",
                     termion::color::Fg(termion::color::Red),
                     termion::color::Fg(termion::color::Reset),
                     dir.display()
