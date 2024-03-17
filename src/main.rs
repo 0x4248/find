@@ -45,7 +45,7 @@ fn main() {
         return;
     }
     let filename;
-    
+
     if quiet {
         filename = &args[2];
     } else {
