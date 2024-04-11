@@ -1,8 +1,8 @@
 /* Rust Spinner (spinner.rs)
  * A simple spinner for Rust
- * Github: https://www.github.com/lewisevans2007/rust_spinner
+ * Github: https://www.github.com/0x4248/rust_spinner
  * Licence: GNU General Public License v3.0
- * By: Lewis Evans
+ * By: 0x4248
 */
 
 pub mod spinner {
